@@ -23,6 +23,9 @@
                 <input matInput (keyup.enter)="garden.products.push('')" value="{{ garden.products[i] }}" />
             </mat-form-field>
         </div>
+        <button mat-raised-button color="accent" *ngIf="!garden.products || garden.products.length < 1" (click)="garden.products.push('')">
+            Ajouter
+        </button>
     </mat-expansion-panel>
     <label>Photo du jardin</label>
     <input type="file" (change)="handleFileInput($event)" />
