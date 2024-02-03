@@ -1,6 +1,6 @@
 {
     "name": "server",
-    "description": "Serveur du projet de base pour le cours de LOG2990",
+    "description": "Serveur du projet GrowGreen",
     "version": "1.3.0",
     "private": true,
     "scripts": {
