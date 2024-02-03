@@ -18,14 +18,21 @@ import { AuthButtonComponentComponent } from './components/auth-button-component
  */
 @NgModule({
     declarations: [AppComponent, MainPageComponent, AuthButtonComponentComponent],
-    imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule,
-    AuthModule.forRoot({
-        domain: 'dev-cube6o10k3bfxl6d.us.auth0.com',
-        clientId: '9vZNX3TpRLzwAyCraxkmfm2PrgVa6Hjm',
-        authorizationParams: {
-            redirect_uri: window.location.origin
-        }
-    })],
+    imports: [
+        AppMaterialModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AuthModule.forRoot({
+            domain: 'dev-cube6o10k3bfxl6d.us.auth0.com',
+            clientId: '9vZNX3TpRLzwAyCraxkmfm2PrgVa6Hjm',
+            authorizationParams: {
+                redirect_uri: window.location.origin,
+            },
+        }),
+    ],
     providers: [],
     bootstrap: [AppComponent],
 })
