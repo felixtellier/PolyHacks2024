@@ -1,8 +1,8 @@
-//import { HttpErrorResponse } from '@angular/common/http';
+// import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-//import { CommunicationService } from '@app/services/communication.service';
+// import { CommunicationService } from '@app/services/communication.service';
 import { BehaviorSubject } from 'rxjs';
-//import { map } from 'rxjs/operators';
+// import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-main-page',
@@ -13,7 +13,7 @@ export class MainPageComponent {
     readonly title: string = 'LOG2990';
     message: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-    //constructor(private readonly communicationService: CommunicationService) {}
+    // constructor(private readonly communicationService: CommunicationService) {}
 
     sendTimeToServer(): void {
         // const newTimeMessage: Message = {
@@ -34,14 +34,14 @@ export class MainPageComponent {
     }
 
     getMessagesFromServer(): void {
-    //     this.communicationService
-    //         .basicGet()
-    //         // Cette étape transforme l'objet Message en un seul string
-    //         .pipe(
-    //             map((message: Message) => {
-    //                 return `${message.title} ${message.body}`;
-    //             }),
-    //         )
-    //         .subscribe(this.message);
+        //     this.communicationService
+        //         .basicGet()
+        //         // Cette étape transforme l'objet Message en un seul string
+        //         .pipe(
+        //             map((message: Message) => {
+        //                 return `${message.title} ${message.body}`;
+        //             }),
+        //         )
+        //         .subscribe(this.message);
     }
 }
