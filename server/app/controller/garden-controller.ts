@@ -19,7 +19,7 @@ export class GardenController {
 
                 res.status(StatusCodes.OK).json(gardens);
             } catch (error) {
-                res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ fuck: 'you' });
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
             }
         });
     }
