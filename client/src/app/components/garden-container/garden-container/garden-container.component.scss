@@ -1,7 +1,9 @@
 .garden-container {
     height: 80%;
-    margin: 3vh;
+    padding: 3vh;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-content: flex-start;
+    background-color: rgb(232, 232, 232);
 }
