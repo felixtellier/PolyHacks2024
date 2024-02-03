@@ -10,6 +10,7 @@ import { MainPageComponent } from '@app/pages/main-page/main-page.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponentComponent } from './components/auth-button-component/auth-button-component.component';
 import { GardenContainerComponent } from './components/garden-container/garden-container/garden-container.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 /**
  * Main module that is used in main.ts.
@@ -18,7 +19,7 @@ import { GardenContainerComponent } from './components/garden-container/garden-c
  * Otherwise Angular Cli will not know in which module to put new component
  */
 @NgModule({
-    declarations: [AppComponent, MainPageComponent, AuthButtonComponentComponent, GardenContainerComponent],
+    declarations: [AppComponent, MainPageComponent, AuthButtonComponentComponent, TopBarComponent, GardenContainerComponent],
     imports: [
         AppMaterialModule,
         AppRoutingModule,
