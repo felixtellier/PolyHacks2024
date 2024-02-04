@@ -32,6 +32,9 @@ export class ProfilePageComponent implements OnInit {
                 this.user = user;
             },
         });
+        this.communicationService.getAllGardens().subscribe((gardens) => {
+            this.user.gardens = gardens;
+        });
     }
 
     goToCreation() {
