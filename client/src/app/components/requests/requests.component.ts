@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { AlertDialogComponent } from '@app/components/alert-dialog/alert-dialog.component';
 import { InRequest, OutRequest } from '@common/request';
 
 @Component({
@@ -17,16 +19,19 @@ export class RequestsComponent implements OnInit {
             state: 'Accepté',
             garden: 'Le jardin des Lemay',
             user: 'Robert',
+            nBags: 1,
         },
         {
             state: 'En attente',
             garden: 'Le jardin des Foulem',
             user: 'Olivier',
+            nBags: 2,
         },
         {
             state: 'Refusé',
             garden: 'Le jardin de fraises',
             user: 'Remi',
+            nBags: 5,
         },
     ];
     inRequests: InRequest[] = [
@@ -53,12 +58,15 @@ export class RequestsComponent implements OnInit {
     inDataSource: MatTableDataSource<InRequest> = new MatTableDataSource(this.emptyInRequest);
     outDataSource: MatTableDataSource<OutRequest> = new MatTableDataSource(this.emptyOutRequest);
 
+    constructor(private dialog: MatDialog) {}
+
     ngOnInit(): void {
         this.outDataSource.data = this.outRequests;
         this.inDataSource.data = this.inRequests;
     }
 
     onSubmit(): void {
-        window.alert('Votre reponse a ete envoyer');
+        // window.alert('Votre reponse a ete envoyer');
+        this.dialog.open(AlertDialogComponent, {});
     }
 }

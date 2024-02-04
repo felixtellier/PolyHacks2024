@@ -27,6 +27,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { GardenCreationComponent } from './pages/garden-creation/garden-creation.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
 
 /**
  * Main module that is used in main.ts.
@@ -49,6 +50,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
         ConfirmationDialogComponent,
         AuthentificationDialogComponent,
         RequestsComponent,
+        AlertDialogComponent,
     ],
     imports: [
         AppMaterialModule,

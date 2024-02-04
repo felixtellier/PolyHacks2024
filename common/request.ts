@@ -2,6 +2,7 @@ export interface OutRequest {
     state: string;
     garden: string;
     user: string;
+    nBags: number;
 }
 
 export interface InRequest {

@@ -26,6 +26,8 @@ export class ConfirmationDialogComponent {
         const request: InRequest = {
             garden: this.garden.name,
             user: 'test',
+            nBags: 2,
+            accepted: 'Yes',
         };
         this.communicationService.sendRequest(request);
         this.dialogRef.close(true);
