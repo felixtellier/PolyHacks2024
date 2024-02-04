@@ -1,5 +1,4 @@
-/* eslint-disable no-underscore-dangle */
-import { DB_COLLECTION } from '@app/utils/env';
+import { DB_COLLECTION_GARDEN } from '@app/utils/env';
 import { Garden, GardenDB } from '@common/garden';
 import { Service } from 'typedi';
 import { dbService } from './database';
@@ -12,9 +11,9 @@ export class GardenService {
     async addGarden(garden: Garden): Promise<Garden> {
         do {
             garden.id = this.generatorId.generateRandomId();
-        } while ((await dbService.db.collection(DB_COLLECTION).findOne({ id: garden.id })) !== null);
+        } while ((await dbService.db.collection(DB_COLLECTION_GARDEN).findOne({ id: garden.id })) !== null);
 
-        await dbService.db.collection(DB_COLLECTION).insertOne(garden);
+        await dbService.db.collection(DB_COLLECTION_GARDEN).insertOne(garden);
         return garden;
     }
 
@@ -27,20 +26,20 @@ export class GardenService {
             name: garden.name,
             products: garden.products,
         };
-        await dbService.db.collection(DB_COLLECTION).findOneAndReplace(filter, update, { returnDocument: 'before' });
+        await dbService.db.collection(DB_COLLECTION_GARDEN).findOneAndReplace(filter, update, { returnDocument: 'before' });
         return garden;
     }
 
     async getAllGarden(): Promise<GardenDB[]> {
-        return (await dbService.db.collection(DB_COLLECTION).find({}).toArray()) as GardenDB[];
+        return (await dbService.db.collection(DB_COLLECTION_GARDEN).find({}).toArray()) as GardenDB[];
     }
 
     async getGardenById(id: number): Promise<Garden> {
-        return (await dbService.db.collection(DB_COLLECTION).findOne({ id })) as GardenDB;
+        return (await dbService.db.collection(DB_COLLECTION_GARDEN).findOne({ id })) as GardenDB;
     }
 
     async deleteGarden(id: number): Promise<boolean> {
-        const res = await dbService.db.collection(DB_COLLECTION).findOneAndDelete({ id });
+        const res = await dbService.db.collection(DB_COLLECTION_GARDEN).findOneAndDelete({ id });
         return res.value !== null;
     }
 }

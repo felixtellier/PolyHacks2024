@@ -9,3 +9,7 @@ export interface User {
     points: number;
     requests: InRequest[];
 }
+
+export interface UserDB extends User {
+    _id?: any;
+}

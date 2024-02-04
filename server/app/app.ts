@@ -7,6 +7,7 @@ import * as swaggerJSDoc from 'swagger-jsdoc';
 import * as swaggerUi from 'swagger-ui-express';
 import { Service } from 'typedi';
 import { GardenController } from './controller/garden-controller';
+import { UsersController } from './controller/user-controller';
 
 @Service()
 export class Application {
@@ -14,7 +15,10 @@ export class Application {
     private readonly internalError: number = StatusCodes.INTERNAL_SERVER_ERROR;
     private readonly swaggerOptions: swaggerJSDoc.Options;
 
-    constructor(private readonly gardenController: GardenController) {
+    constructor(
+        private readonly gardenController: GardenController,
+        private readonly userController: UsersController,
+    ) {
         this.app = express();
 
         this.swaggerOptions = {
@@ -36,6 +40,7 @@ export class Application {
     bindRoutes(): void {
         this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(this.swaggerOptions)));
         this.app.use('/api/garden', this.gardenController.router);
+        this.app.use('/api/user', this.userController.router);
         this.app.use('/', (req, res) => {
             res.redirect('/api/docs');
         });
