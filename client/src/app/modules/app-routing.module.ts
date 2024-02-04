@@ -8,6 +8,7 @@ import { ProfilePageComponent } from '@app/pages/profile-page/profile-page.compo
 const routes: Routes = [
     { path: 'home', component: MainPageComponent },
     { path: 'garden-creation', component: GardenCreationComponent },
+    { path: 'garden-creation/:id', component: GardenCreationComponent },
     { path: 'info', component: InfoPageComponent },
     { path: 'profile-page', component: ProfilePageComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },

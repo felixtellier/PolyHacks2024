@@ -1,12 +1,21 @@
 <app-top-bar></app-top-bar>
 
-<div>
+<div class="user-info">
     <p>Nom : {{ user.name }}</p>
     <p>Adresse email: {{ user.email }}</p>
     <p>Points accumulés: {{ user.points }}</p>
-    <div *ngFor="let garden of user.gardens">
-        <app-garden [garden]="garden"></app-garden>
-    </div>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title> Mes jardins</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="garden-grid">
+            <div *ngFor="let garden of user.gardens">
+                <app-garden [garden]="garden" [isProfile]="true"></app-garden>
+            </div>
+        </div>
+    </mat-expansion-panel>
+
     <button (click)="goToCreation()">Ajouter un jardin</button>
 </div>
 

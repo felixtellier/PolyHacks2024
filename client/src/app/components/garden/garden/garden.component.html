@@ -14,6 +14,9 @@
         <span *ngFor="let product of garden.products" class="product"> {{ product }} </span>
     </mat-card-content>
     <mat-card-actions align="end">
-        <button mat-raised-button color="primary" (click)="openDialog()">Envoyer du composte</button>
+        <button *ngIf="isProfile === undefined || isProfile === false" mat-raised-button color="primary" (click)="openDialog()">
+            Envoyer du composte
+        </button>
+        <button *ngIf="isProfile === true" mat-raised-button color="accent" (click)="edit()">Editer</button>
     </mat-card-actions>
 </mat-card>
