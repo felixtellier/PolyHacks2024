@@ -9,9 +9,9 @@ import { Garden } from '@common/garden';
 export class GardenComponent {
     @Input() garden: Garden;
     @Input() isProfile?: boolean;
+    @Input() srcImage: string;
     constructor(private router: Router) {}
     edit() {
         this.router.navigate(['/garden-creation', this.garden.id]);
     }
-    @Input() srcImage: string;
 }
