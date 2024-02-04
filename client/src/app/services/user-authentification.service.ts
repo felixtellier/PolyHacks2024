@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '@common/user';
 import { CommunicationService } from './communication.service';
 
 @Injectable({
@@ -6,7 +7,7 @@ import { CommunicationService } from './communication.service';
 })
 export class UserAuthentificationService {
     isLog: boolean = false;
-    userId = '';
+    user: User;
     constructor(private communicationService: CommunicationService) {}
 
     sendUserInfo(username: string, password: string) {
@@ -14,7 +15,7 @@ export class UserAuthentificationService {
             next: (response) => {
                 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
                 this.isLog = response.status === 200;
-                if (response.body) this.userId = response.body[0].id;
+                if (response.body) this.user = response.body[0];
                 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
                 return response.status === 200;
             },

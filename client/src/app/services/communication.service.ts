@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '@auth0/auth0-angular';
 import { Garden } from '@common/garden';
 import { InRequest } from '@common/request';
+import { User } from '@common/user';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -27,8 +27,13 @@ export class CommunicationService {
         return this.http.put<Garden>(`${this.baseUrl}/garden`, garden).pipe(catchError(this.handleError<Garden>('PushGarden')));
     }
 
-    postUser(username: string, password: string): Observable<User> {
-        return this.http.post(`${this.baseUrl}/user`, { username, password }, { observe: 'response', responseType: 'text' });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    postUser(username: string, password: string): Observable<any> {
+        return this.http.post(`${this.baseUrl}/user`, { username, password }, { responseType: 'json' });
+    }
+
+    getUser(id: number): Observable<User> {
+        return this.http.get<User>(`${this.baseUrl}/user/${id}`).pipe(catchError(this.handleError<User>('GetUser')));
     }
 
     private handleError<T>(request: string, result?: T): (error: Error) => Observable<T> {
