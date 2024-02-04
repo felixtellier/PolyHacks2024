@@ -14,7 +14,7 @@ export class CommunicationService {
     constructor(private readonly http: HttpClient) {}
 
     getAllGardens(): Observable<Garden[]> {
-        return this.http.get<Garden[]>(`${this.baseUrl}/gardens`).pipe(catchError(this.handleError<Garden[]>('GetGardens')));
+        return this.http.get<Garden[]>(`${this.baseUrl}/garden`).pipe(catchError(this.handleError<Garden[]>('GetGardens')));
     }
 
     private handleError<T>(request: string, result?: T): (error: Error) => Observable<T> {
