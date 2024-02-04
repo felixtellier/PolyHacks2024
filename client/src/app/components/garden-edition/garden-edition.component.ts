@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommunicationService } from '@app/services/communication.service';
 import { Garden } from '@common/garden';
 @Component({
@@ -19,7 +20,10 @@ export class GardenEditionComponent {
         products: [''],
     };
 
-    constructor(private communicationService: CommunicationService) {}
+    constructor(
+        private communicationService: CommunicationService,
+        private router: Router,
+    ) {}
 
     // TODO get unique id
     setUniqueId() {}
@@ -41,9 +45,12 @@ export class GardenEditionComponent {
         }
     }
 
+    trackByFn(index: number): any {
+        return index;
+    }
     // TODO send to server
     confirm() {
         this.communicationService.pushGarden(this.garden).subscribe();
-        console.log(this.garden);
+        this.router.navigate(['/profile-page']);
     }
 }

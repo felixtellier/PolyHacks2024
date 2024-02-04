@@ -17,15 +17,13 @@
             <mat-panel-title> Aliments</mat-panel-title>
         </mat-expansion-panel-header>
 
-        <div *ngFor="let product of garden.products; index as i">
+        <div *ngFor="let product of garden.products; index as i; trackBy: trackByFn">
             <mat-form-field>
                 <mat-label>Entrer un aliment</mat-label>
-                <input matInput (keyup.enter)="garden.products.push('')" value="{{ garden.products[i] }}" />
+                <input matInput [(ngModel)]="garden.products[i]" />
             </mat-form-field>
         </div>
-        <button mat-raised-button color="accent" *ngIf="!garden.products || garden.products.length < 1" (click)="garden.products.push('')">
-            Ajouter
-        </button>
+        <button mat-raised-button color="accent" (click)="garden.products.push('')">Ajouter</button>
     </mat-expansion-panel>
     <label>Photo du jardin</label>
     <input type="file" (change)="handleFileInput($event)" />
