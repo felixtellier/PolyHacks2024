@@ -14,7 +14,7 @@ export class UserAuthentificationService {
             next: (response) => {
                 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
                 this.isLog = response.status === 200;
-                if (response.body) this.userId = response.body[0];
+                if (response.body) this.userId = response.body[0].id;
                 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
                 return response.status === 200;
             },
