@@ -13,7 +13,7 @@ export class UserAuthentificationService {
     sendUserInfo(username: string, password: string) {
         this.communicationService.postUser(username, password).subscribe({
             next: (response) => {
-                this.user = response.body;
+                this.user = response;
                 this.isLog = true;
             },
         });
