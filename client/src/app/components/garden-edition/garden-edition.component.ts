@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component } from '@angular/core';
+import { CommunicationService } from '@app/services/communication.service';
 import { Garden } from '@common/garden';
 @Component({
     selector: 'app-garden-edition',
@@ -17,6 +18,8 @@ export class GardenEditionComponent {
         dimension: '',
         products: [''],
     };
+
+    constructor(private communicationService: CommunicationService) {}
 
     // TODO get unique id
     setUniqueId() {}
@@ -40,6 +43,7 @@ export class GardenEditionComponent {
 
     // TODO send to server
     confirm() {
+        this.communicationService.pushGarden(this.garden).subscribe();
         console.log(this.garden);
     }
 }
