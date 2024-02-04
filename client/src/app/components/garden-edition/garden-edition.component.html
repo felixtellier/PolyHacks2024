@@ -17,7 +17,7 @@
             <mat-panel-title> Aliments</mat-panel-title>
         </mat-expansion-panel-header>
 
-        <div *ngFor="let product of garden.products; index as i">
+        <div *ngFor="let product of garden.products; index as i; trackBy: trackByFn">
             <mat-form-field>
                 <mat-label>Entrer un aliment</mat-label>
                 <input matInput [(ngModel)]="garden.products[i]" />
