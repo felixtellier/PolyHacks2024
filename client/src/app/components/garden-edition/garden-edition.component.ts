@@ -2,6 +2,9 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommunicationService } from '@app/services/communication.service';
 import { Garden } from '@common/garden';
 @Component({
     selector: 'app-garden-edition',
@@ -9,6 +12,8 @@ import { Garden } from '@common/garden';
     styleUrls: ['./garden-edition.component.scss'],
 })
 export class GardenEditionComponent {
+    nameFormControl = new FormControl('', [Validators.required]);
+    locationFormControl = new FormControl('', [Validators.required]);
     garden: Garden = {
         id: 1,
         name: '',
@@ -17,6 +22,11 @@ export class GardenEditionComponent {
         dimension: '',
         products: [''],
     };
+
+    constructor(
+        private communicationService: CommunicationService,
+        private router: Router,
+    ) {}
 
     // TODO get unique id
     setUniqueId() {}
@@ -38,8 +48,14 @@ export class GardenEditionComponent {
         }
     }
 
+    trackByFn(index: number): any {
+        return index;
+    }
     // TODO send to server
     confirm() {
-        console.log(this.garden);
+        if (this.garden.name !== '' && this.garden.location !== '') {
+            this.communicationService.pushGarden(this.garden).subscribe();
+            this.router.navigate(['/profile-page']);
+        }
     }
 }
