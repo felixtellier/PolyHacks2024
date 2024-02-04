@@ -2,6 +2,8 @@ import { Application } from '@app/app';
 import * as http from 'http';
 import { AddressInfo } from 'net';
 import { Service } from 'typedi';
+import { dbService } from './services/database';
+import { DB_URL } from './utils/env';
 
 @Service()
 export class Server {
@@ -24,6 +26,7 @@ export class Server {
         this.server.listen(Server.appPort);
         this.server.on('error', (error: NodeJS.ErrnoException) => this.onError(error));
         this.server.on('listening', () => this.onListening());
+        dbService.connectToServer(DB_URL);
     }
 
     private onError(error: NodeJS.ErrnoException): void {

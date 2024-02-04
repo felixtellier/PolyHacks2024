@@ -16,9 +16,13 @@ import { AppComponent } from '@app/pages/app/app.component';
 import { MainPageComponent } from '@app/pages/main-page/main-page.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponentComponent } from './components/auth-button-component/auth-button-component.component';
+import { GardenContainerComponent } from './components/garden-container/garden-container/garden-container.component';
 import { GardenEditionComponent } from './components/garden-edition/garden-edition.component';
+import { GardenComponent } from './components/garden/garden/garden.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { GardenCreationComponent } from './pages/garden-creation/garden-creation.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 /**
  * Main module that is used in main.ts.
@@ -27,7 +31,18 @@ import { InfoPageComponent } from './pages/info-page/info-page.component';
  * Otherwise Angular Cli will not know in which module to put new component
  */
 @NgModule({
-    declarations: [AppComponent, MainPageComponent, AuthButtonComponentComponent, GardenCreationComponent, GardenEditionComponent, InfoPageComponent],
+    declarations: [
+        AppComponent,
+        MainPageComponent,
+        AuthButtonComponentComponent,
+        TopBarComponent,
+        GardenContainerComponent,
+        GardenComponent,
+        GardenCreationComponent,
+        GardenEditionComponent,
+        InfoPageComponent,
+        ProfilePageComponent,
+    ],
     imports: [
         AppMaterialModule,
         AppRoutingModule,

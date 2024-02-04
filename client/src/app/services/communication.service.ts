@@ -1,26 +1,23 @@
-// import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Observable, of } from 'rxjs';
-// import { catchError } from 'rxjs/operators';
-// import { environment } from 'src/environments/environment';
+import { Garden } from '@common/garden';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CommunicationService {
-    //private readonly baseUrl: string = environment.serverUrl;
+    private readonly baseUrl: string = environment.serverUrl;
 
-    //constructor(private readonly http: HttpClient) {}
+    constructor(private readonly http: HttpClient) {}
 
-    // basicGet(): Observable<Message> {
-    //     return this.http.get<Message>(`${this.baseUrl}/example`).pipe(catchError(this.handleError<Message>('basicGet')));
-    // }
+    getAllGardens(): Observable<Garden[]> {
+        return this.http.get<Garden[]>(`${this.baseUrl}/garden`).pipe(catchError(this.handleError<Garden[]>('GetGardens')));
+    }
 
-    // basicPost(message: Message): Observable<HttpResponse<string>> {
-    //     return this.http.post(`${this.baseUrl}/example/send`, message, { observe: 'response', responseType: 'text' });
-    // }
-
-    // private handleError<T>(request: string, result?: T): (error: Error) => Observable<T> {
-    //     return () => of(result as T);
-    // }
+    private handleError<T>(request: string, result?: T): (error: Error) => Observable<T> {
+        return () => of(result as T);
+    }
 }
