@@ -13,8 +13,6 @@ export class AuthentificationDialogComponent {
     constructor(private userService: UserAuthentificationService) {}
 
     sendAuthentification() {
-        console.log(this.username);
-        console.log(this.password);
         this.userService.sendUserInfo(this.username, this.password);
     }
 }
