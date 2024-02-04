@@ -17,6 +17,10 @@ export class CommunicationService {
         return this.http.get<Garden[]>(`${this.baseUrl}/garden`).pipe(catchError(this.handleError<Garden[]>('GetGardens')));
     }
 
+    getGarden(id: number): Observable<Garden> {
+        return this.http.get<Garden>(`${this.baseUrl}/garden/${id}`).pipe(catchError(this.handleError<Garden>('GetGarden')));
+    }
+
     pushGarden(garden: Garden): Observable<Garden> {
         return this.http.put<Garden>(`${this.baseUrl}/garden`, garden).pipe(catchError(this.handleError<Garden>('PushGarden')));
     }

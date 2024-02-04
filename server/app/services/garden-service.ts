@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { DB_COLLECTION } from '@app/utils/env';
 import { Garden, GardenDB } from '@common/garden';
 import { Service } from 'typedi';
@@ -17,8 +18,16 @@ export class GardenService {
         return garden;
     }
 
-    async updateGarden(garden: Garden): Promise<Garden> {
-        await dbService.db.collection(DB_COLLECTION).findOneAndReplace({ id: garden.id }, garden);
+    async updateGarden(garden: GardenDB): Promise<Garden> {
+        const filter = { id: garden.id };
+        const update = {
+            id: garden.id,
+            dimension: garden.dimension,
+            location: garden.location,
+            name: garden.name,
+            products: garden.products,
+        };
+        await dbService.db.collection(DB_COLLECTION).findOneAndReplace(filter, update, { returnDocument: 'before' });
         return garden;
     }
 

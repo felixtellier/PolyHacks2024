@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommunicationService } from '@app/services/communication.service';
 import { Garden } from '@common/garden';
 @Component({
@@ -10,7 +10,7 @@ import { Garden } from '@common/garden';
     templateUrl: './garden-edition.component.html',
     styleUrls: ['./garden-edition.component.scss'],
 })
-export class GardenEditionComponent {
+export class GardenEditionComponent implements OnInit {
     garden: Garden = {
         id: 1,
         name: '',
@@ -23,7 +23,20 @@ export class GardenEditionComponent {
     constructor(
         private communicationService: CommunicationService,
         private router: Router,
-    ) {}
+        private route: ActivatedRoute,
+    ) {
+        this.route.params.subscribe((params) => {
+            this.garden.id = params.id;
+        });
+    }
+
+    ngOnInit(): void {
+        if (this.route.snapshot.params.id) {
+            this.communicationService.getGarden(this.garden.id).subscribe((garden) => {
+                this.garden = garden;
+            });
+        }
+    }
 
     // TODO get unique id
     setUniqueId() {}
@@ -48,7 +61,6 @@ export class GardenEditionComponent {
     trackByFn(index: number): any {
         return index;
     }
-    // TODO send to server
     confirm() {
         this.communicationService.pushGarden(this.garden).subscribe();
         this.router.navigate(['/profile-page']);
