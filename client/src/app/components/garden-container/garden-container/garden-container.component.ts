@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicationService } from '@app/services/communication.service';
 import { Garden } from '@common/garden';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-garden-container',
@@ -7,42 +9,11 @@ import { Garden } from '@common/garden';
     styleUrls: ['./garden-container.component.scss'],
 })
 export class GardenContainerComponent implements OnInit {
-    gardens: Garden[];
+    readonly gardens: BehaviorSubject<Garden[]> = new BehaviorSubject<Garden[]>([]);
+
+    constructor(private readonly communicationService: CommunicationService) {}
 
     ngOnInit(): void {
-        this.gardens = [
-            {
-                id: 1,
-                name: 'Test',
-                location: '2024 rue de bucarest',
-                photo: '1',
-                dimension: '40',
-                products: ['carrot', 'patate'],
-            },
-            {
-                id: 1,
-                name: 'Test',
-                location: '2024 rue de bucarest',
-                photo: '1',
-                dimension: '40',
-                products: ['carrot', 'patate'],
-            },
-            {
-                id: 1,
-                name: 'Test',
-                location: '2024 rue de bucarest',
-                photo: '1',
-                dimension: '40',
-                products: ['carrot', 'patate'],
-            },
-            {
-                id: 1,
-                name: 'Test',
-                location: '2024 rue de bucarest',
-                photo: '1',
-                dimension: '40',
-                products: ['carrot', 'patate'],
-            },
-        ];
+        this.communicationService.getAllGardens().subscribe(this.gardens);
     }
 }
