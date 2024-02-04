@@ -1,3 +1,8 @@
+<div id="search">
+    <mat-icon>search</mat-icon>
+    <input class="search-input" placeholder="Filtrer les jardins" type="text" [(ngModel)]="value" (keyup)="filterList()" />
+</div>
 <div class="garden-container">
-    <app-garden *ngFor="let garden of gardens | async" [garden]="garden"></app-garden>
+    <p *ngIf="filteredGardens.length === 0">Pas de jardin de trouvé</p>
+    <app-garden *ngFor="let garden of filteredGardens" [garden]="garden"></app-garden>
 </div>
