@@ -8,4 +8,5 @@ import { Garden } from '@common/garden';
 })
 export class GardenComponent {
     @Input() garden: Garden;
+    @Input() srcImage: string;
 }
