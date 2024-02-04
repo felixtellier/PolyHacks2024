@@ -4,11 +4,11 @@
         <div class="flex-column">
             <mat-form-field>
                 <mat-label>Nom du jardin</mat-label>
-                <input matInput [(ngModel)]="garden.name" />
+                <input matInput [formControl]="nameFormControl" [(ngModel)]="garden.name" />
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Adresse du jardin</mat-label>
-                <input matInput [(ngModel)]="garden.location" />
+                <input matInput [formControl]="locationFormControl" [(ngModel)]="garden.location" />
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Dimensions en m²</mat-label>
@@ -20,18 +20,19 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title> Aliments cultivés</mat-panel-title>
                 </mat-expansion-panel-header>
-
-                <div *ngFor="let product of garden.products; index as i; trackBy: trackByFn">
-                    <mat-form-field>
-                        <mat-label>Entrer un aliment</mat-label>
-                        <input matInput [(ngModel)]="garden.products[i]" />
-                    </mat-form-field>
+                <div [ngStyle]="{ 'overflow-y': garden.products.length >= 3 ? 'auto' : 'none' }" id="expansion-panel">
+                    <div *ngFor="let product of garden.products; index as i; trackBy: trackByFn">
+                        <mat-form-field>
+                            <mat-label>Entrer un aliment</mat-label>
+                            <input matInput [(ngModel)]="garden.products[i]" />
+                        </mat-form-field>
+                    </div>
+                    <button mat-raised-button color="accent" (click)="garden.products.push('')">Ajouter</button>
                 </div>
-                <button mat-raised-button color="accent" (click)="garden.products.push('')">Ajouter</button>
             </mat-expansion-panel>
-            <label>Photo du jardin</label>
-            <input type="file" (change)="handleFileInput($event)" />
-            <button mat-raised-button color="primary" (click)="confirm()">Confirmer</button>
         </div>
     </div>
+    <label>Photo du jardin</label>
+    <input type="file" accept="image/png, image/jpeg" (change)="handleFileInput($event)" />
+    <button mat-raised-button color="primary" class="confirm-button" (click)="confirm()">Confirmer</button>
 </div>

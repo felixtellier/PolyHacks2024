@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -58,6 +58,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
         MatInputModule,
         MatButtonModule,
         MatSelectModule,
+        ReactiveFormsModule,
         AuthModule.forRoot({
             domain: 'dev-cube6o10k3bfxl6d.us.auth0.com',
             clientId: '9vZNX3TpRLzwAyCraxkmfm2PrgVa6Hjm',
