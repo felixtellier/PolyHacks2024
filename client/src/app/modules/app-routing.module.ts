@@ -10,7 +10,7 @@ const routes: Routes = [
     { path: 'garden-creation', component: GardenCreationComponent },
     { path: 'garden-creation/:id', component: GardenCreationComponent },
     { path: 'info', component: InfoPageComponent },
-    { path: 'profile-page', component: ProfilePageComponent },
+    { path: 'profile-page/:id', component: ProfilePageComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home' },
 ];

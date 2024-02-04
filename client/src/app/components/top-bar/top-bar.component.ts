@@ -16,7 +16,7 @@ export class TopBarComponent {
     ) {}
     goToProfile() {
         if (this.userService.isLog) {
-            this.router.navigate(['/profile-page']);
+            this.router.navigate([`/profile-page/${this.userService.user.id.toString()}`]);
         } else {
             this.dialog.open(AuthentificationDialogComponent);
         }
