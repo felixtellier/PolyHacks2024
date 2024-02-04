@@ -66,7 +66,6 @@ export class RequestsComponent implements OnInit {
     }
 
     onSubmit(): void {
-        // window.alert('Votre reponse a ete envoyer');
         this.dialog.open(AlertDialogComponent, {});
     }
 }
