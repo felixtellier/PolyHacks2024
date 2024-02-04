@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { InRequest, OutRequest } from '@common/request';
 
@@ -7,8 +7,11 @@ import { InRequest, OutRequest } from '@common/request';
     templateUrl: './requests.component.html',
     styleUrls: ['./requests.component.scss'],
 })
-export class RequestsComponent {
-    outColumms: string[] = ['Etat', 'Jardin', 'Utilisateur'];
+export class RequestsComponent implements OnInit {
+    outColumns: string[] = ['etat', 'jardin', 'utilisateur'];
+    inColumns: string[] = ['jardin', 'utilisateur'];
+    emptyOutRequest: OutRequest[] = [];
+    emptyInRequest: InRequest[] = [];
     outRequests: OutRequest[] = [
         {
             state: 'Accepté',
@@ -41,8 +44,14 @@ export class RequestsComponent {
         },
     ];
 
-    inDataSource: MatTableDataSource<InRequest> = new MatTableDataSource(this.inRequests);
-    outDataSource: MatTableDataSource<OutRequest> = new MatTableDataSource(this.outRequests);
+    inDataSource: MatTableDataSource<InRequest> = new MatTableDataSource(this.emptyInRequest);
+    outDataSource: MatTableDataSource<OutRequest> = new MatTableDataSource(this.emptyOutRequest);
+
+    ngOnInit(): void {
+        this.outDataSource.data = this.outRequests;
+        this.inDataSource.data = this.inRequests;
+        console.log(this.outDataSource.data);
+    }
 
     // private getRequests(): void {
     //   this.requests = this.communicationService.getRequests();
