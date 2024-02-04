@@ -15,6 +15,7 @@ export class ProfilePageComponent {
         password: '',
         gardens: [],
         points: 0,
+        requests: [],
     };
 
     constructor(private router: Router) {}
