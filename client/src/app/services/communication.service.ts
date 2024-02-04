@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Garden } from '@common/garden';
 import { InRequest } from '@common/request';
@@ -24,6 +24,10 @@ export class CommunicationService {
 
     pushGarden(garden: Garden): Observable<Garden> {
         return this.http.put<Garden>(`${this.baseUrl}/garden`, garden).pipe(catchError(this.handleError<Garden>('PushGarden')));
+    }
+
+    postUser(username: string, password: string): Observable<HttpResponse<string>> {
+        return this.http.post(`${this.baseUrl}/user`, { username, password }, { observe: 'response', responseType: 'text' });
     }
 
     private handleError<T>(request: string, result?: T): (error: Error) => Observable<T> {
