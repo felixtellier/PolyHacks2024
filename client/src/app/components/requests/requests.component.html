@@ -41,6 +41,30 @@
                     <td mat-cell *matCellDef="let element">{{ element.user }}</td>
                 </ng-container>
 
+                <ng-container matColumnDef="nbSac">
+                    <th mat-header-cell *matHeaderCellDef>Nombre de sac</th>
+                    <td mat-cell *matCellDef="let element">{{ element.nBags }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="reponse">
+                    <th mat-header-cell *matHeaderCellDef>Votre reponse</th>
+                    <td mat-cell *matCellDef="let element">
+                        <!--<form>
+                            <input type="radio" id="html" name="fav_language" value="1" />
+                            <label for="html">Accepter</label><br />
+                            <input type="radio" id="css" name="fav_language" value="2" />
+                            <label for="css">Refuser</label><br />
+                            <input type="submit" value="Enregistrer" />
+                        </form>-->
+                        <form (ngSubmit)="onSubmit()">
+                            <label> <input type="radio" name="decision" [(ngModel)]="element.accepted" value="yes" /> Accepter </label>
+                            <label> <input type="radio" name="decision" [(ngModel)]="element.accepted" value="no" /> Refuser </label>
+
+                            <button type="submit">Submit</button>
+                        </form>
+                    </td>
+                </ng-container>
+
                 <tr mat-header-row *matHeaderRowDef="inColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: inColumns"></tr>
             </table>

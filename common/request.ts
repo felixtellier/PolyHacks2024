@@ -7,6 +7,8 @@ export interface OutRequest {
 export interface InRequest {
     garden: string;
     user: string;
+    nBags: number;
+    accepted: string;
 }
 
 export interface RequestDB extends Request {

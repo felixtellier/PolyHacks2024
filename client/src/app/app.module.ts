@@ -20,6 +20,7 @@ import { AuthButtonComponentComponent } from './components/auth-button-component
 import { GardenContainerComponent } from './components/garden-container/garden-container/garden-container.component';
 import { GardenEditionComponent } from './components/garden-edition/garden-edition.component';
 import { GardenComponent } from './components/garden/garden/garden.component';
+import { RequestsComponent } from './components/requests/requests.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { GardenCreationComponent } from './pages/garden-creation/garden-creation.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
@@ -43,6 +44,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
         GardenEditionComponent,
         InfoPageComponent,
         ProfilePageComponent,
+        RequestsComponent,
     ],
     imports: [
         AppMaterialModule,

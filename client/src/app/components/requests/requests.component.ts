@@ -9,7 +9,7 @@ import { InRequest, OutRequest } from '@common/request';
 })
 export class RequestsComponent implements OnInit {
     outColumns: string[] = ['etat', 'jardin', 'utilisateur'];
-    inColumns: string[] = ['jardin', 'utilisateur'];
+    inColumns: string[] = ['jardin', 'utilisateur', 'nbSac', 'reponse'];
     emptyOutRequest: OutRequest[] = [];
     emptyInRequest: InRequest[] = [];
     outRequests: OutRequest[] = [
@@ -33,14 +33,20 @@ export class RequestsComponent implements OnInit {
         {
             garden: 'Jardin de tomates',
             user: 'user4',
+            nBags: 3,
+            accepted: '',
         },
         {
             garden: 'Le jardin des Tellier',
             user: 'Amelie',
+            nBags: 1,
+            accepted: '',
         },
         {
             garden: 'Garden123',
             user: 'Kanye',
+            nBags: 2,
+            accepted: '',
         },
     ];
 
@@ -51,6 +57,8 @@ export class RequestsComponent implements OnInit {
         this.outDataSource.data = this.outRequests;
         this.inDataSource.data = this.inRequests;
     }
+
+    onSubmit(): void {}
 
     // private getRequests(): void {
     //   this.requests = this.communicationService.getRequests();
