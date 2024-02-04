@@ -1,4 +1,5 @@
 import { Garden } from './garden';
+import { InRequest } from './request';
 export interface User {
     id: number;
     name: string;
@@ -6,5 +7,5 @@ export interface User {
     password: string;
     gardens: Garden[];
     points: number;
-    requests: Request[];
+    requests: InRequest[];
 }

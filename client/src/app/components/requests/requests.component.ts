@@ -58,9 +58,7 @@ export class RequestsComponent implements OnInit {
         this.inDataSource.data = this.inRequests;
     }
 
-    onSubmit(): void {}
-
-    // private getRequests(): void {
-    //   this.requests = this.communicationService.getRequests();
-    // }
+    onSubmit(): void {
+        window.alert('Votre reponse a ete envoyer');
+    }
 }
