@@ -16,6 +16,7 @@ export class ProfilePageComponent implements OnInit {
         password: '',
         gardens: [],
         points: 0,
+        requests: [],
     };
 
     constructor(

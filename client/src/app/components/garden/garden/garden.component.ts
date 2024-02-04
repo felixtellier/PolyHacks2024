@@ -13,4 +13,5 @@ export class GardenComponent {
     edit() {
         this.router.navigate(['/garden-creation', this.garden.id]);
     }
+    @Input() srcImage: string;
 }

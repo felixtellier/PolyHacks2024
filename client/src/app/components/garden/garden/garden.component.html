@@ -2,14 +2,14 @@
     <mat-card-header>
         <mat-card-title-group>
             <mat-card-title class="title">{{ garden.name }}</mat-card-title>
-            <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Image d'un jardin" />
+            <img mat-card-lg-image [src]="srcImage" alt="Image d'un jardin" />
         </mat-card-title-group>
     </mat-card-header>
     <mat-card-content class="space-between padding-top"> <b>Adresse: </b>{{ garden.location }} </mat-card-content>
-    <mat-card-content class="space-between padding-top">
+    <mat-card-content class="space-between padding-top" *ngIf="garden.dimension">
         <b>Dimension: </b><span>{{ garden.dimension }} m<sup>2</sup></span>
     </mat-card-content>
-    <mat-card-content class="padding-top wrap">
+    <mat-card-content class="padding-top wrap" *ngIf="garden.products.length !== 0 && garden.products[0]">
         <b>Produit:</b>
         <span *ngFor="let product of garden.products" class="product"> {{ product }} </span>
     </mat-card-content>

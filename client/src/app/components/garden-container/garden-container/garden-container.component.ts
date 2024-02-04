@@ -10,6 +10,16 @@ import { Garden } from '@common/garden';
 export class GardenContainerComponent implements OnInit {
     filteredGardens: Garden[] = [];
     value: string = '';
+    readonly srcImages: string[] = [
+        './assets/img/gardens/garden1.jpg',
+        './assets/img/gardens/garden2.jpg',
+        './assets/img/gardens/garden3.jpg',
+        './assets/img/gardens/garden4.jpg',
+        './assets/img/gardens/garden5.jpg',
+        './assets/img/gardens/garden6.jpg',
+        './assets/img/gardens/garden7.jpg',
+        './assets/img/gardens/garden8.jpg',
+    ];
 
     private gardens: Garden[] = [];
 
