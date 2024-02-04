@@ -46,5 +46,19 @@ export class UsersController {
                 res.status(StatusCodes.INTERNAL_SERVER_ERROR);
             }
         });
+
+        this.router.get('/:id', async (req: Request, res: Response) => {
+            try {
+                const id = parseInt(req.params.id, 10);
+                if (isNaN(id)) {
+                    res.status(StatusCodes.FORBIDDEN).send();
+                    return;
+                }
+
+                res.status(StatusCodes.OK).json(await this.userService.getUserById(id));
+            } catch (error) {
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR).send();
+            }
+        });
     }
 }
