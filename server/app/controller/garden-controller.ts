@@ -27,8 +27,28 @@ export class GardenController {
         this.router.put('/', async (req: Request, res: Response) => {
             try {
                 const garden: Garden = req.body;
+
+                if (!Object.keys(garden).length) {
+                    res.status(StatusCodes.BAD_REQUEST).send();
+                    return;
+                }
+
+                if ((await this.gardenService.getGardenById(garden.id)) !== null) {
+                    await this.gardenService.updateGarden(garden);
+                    res.status(StatusCodes.OK).send();
+                    return;
+                }
+
                 await this.gardenService.addGarden(garden);
                 res.status(StatusCodes.CREATED).send();
+            } catch (error) {
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+            }
+        });
+
+        this.router.delete('/:id', async (req: Request, res: Response) => {
+            try {
+                res.status((await this.gardenService.deleteGarden(parseInt(req.params.id, 10))) ? StatusCodes.OK : StatusCodes.NOT_FOUND).send();
             } catch (error) {
                 res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
             }

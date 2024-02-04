@@ -17,7 +17,21 @@ export class GardenService {
         return garden;
     }
 
+    async updateGarden(garden: Garden): Promise<Garden> {
+        await dbService.db.collection(DB_COLLECTION).findOneAndReplace({ id: garden.id }, garden);
+        return garden;
+    }
+
     async getAllGarden(): Promise<GardenDB[]> {
         return (await dbService.db.collection(DB_COLLECTION).find({}).toArray()) as GardenDB[];
+    }
+
+    async getGardenById(id: number): Promise<Garden> {
+        return (await dbService.db.collection(DB_COLLECTION).findOne({ id })) as GardenDB;
+    }
+
+    async deleteGarden(id: number): Promise<boolean> {
+        const res = await dbService.db.collection(DB_COLLECTION).findOneAndDelete({ id });
+        return res.value !== null;
     }
 }
