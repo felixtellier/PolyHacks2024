@@ -1,9 +1,37 @@
+#search img {
+    width: 60%;
+    height: 60%;
+}
+
+#search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search input {
+    height: 40%;
+    border-radius: 20px;
+}
+
 img {
     width: 5%;
     height: auto;
     padding: 1%;
 }
 
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .topBar {
-    background-color: #4D7E3E;
+    background-color: #4d7e3e;
+    position: relative;
+}
+
+#user {
+    width: 5%;
+    height: auto;
+    padding: 1%;
 }
