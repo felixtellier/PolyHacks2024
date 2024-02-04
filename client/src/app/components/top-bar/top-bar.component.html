@@ -1,12 +1,12 @@
 <div class="topBar">
     <div class="logo">
         <div class="container">
-            <img src="./assets/img/logo-plant.png" alt="Logo Projet" />
+            <img (click)="goToHome()" src="./assets/img/logo-plant.png" alt="Logo Projet" />
             <div id="search">
                 <img src="./assets/img/search.png" />
                 <input type="text" />
             </div>
-            <img src="./assets/img/user.png" id="user" />
+            <img (click)="goToProfile()" src="./assets/img/user.png" id="user" />
         </div>
     </div>
 </div>
