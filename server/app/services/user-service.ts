@@ -20,4 +20,8 @@ export class UserService {
     async getUser(userName: string): Promise<User> {
         return (await dbService.db.collection(DB_COLLECTION_USER).findOne({ name: userName })) as UserDB;
     }
+
+    async getUserById(id: number): Promise<User> {
+        return (await dbService.db.collection(DB_COLLECTION_USER).findOne({ id })) as UserDB;
+    }
 }
