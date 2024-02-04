@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '@common/user';
 
 @Component({
@@ -15,4 +16,10 @@ export class ProfilePageComponent {
         gardens: [],
         points: 0,
     };
+
+    constructor(private router: Router) {}
+
+    goToCreation() {
+        this.router.navigate(['/garden-creation']);
+    }
 }
