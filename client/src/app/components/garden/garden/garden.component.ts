@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '@app/components/confirmation-dialog/confirmation-dialog.component';
 import { Garden } from '@common/garden';
 
 @Component({
@@ -9,4 +11,10 @@ import { Garden } from '@common/garden';
 export class GardenComponent {
     @Input() garden: Garden;
     @Input() srcImage: string;
+
+    constructor(private dialog: MatDialog) {}
+
+    openDialog() {
+        this.dialog.open(ConfirmationDialogComponent, { data: this.garden });
+    }
 }
