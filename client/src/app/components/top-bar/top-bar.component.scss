@@ -11,6 +11,12 @@
 .logo {
     padding: 10px;
     height: 80%;
+    cursor: pointer;
+    transition: all 500ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.logo:hover {
+    transform: translateY(-2px);
 }
 
 .name {
@@ -31,4 +37,10 @@
     font-size: 40px;
     width: 40px;
     height: 40px;
+    cursor: pointer;
+    transition: all 500ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.icon:hover {
+    transform: translateY(-2px);
 }
