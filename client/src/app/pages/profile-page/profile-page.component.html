@@ -1,0 +1,10 @@
+<app-top-bar></app-top-bar>
+
+<div>
+    <p>Nom : {{ user.name }}</p>
+    <p>Adresse email: {{ user.email }}</p>
+    <p>Points accumulés: {{ user.points }}</p>
+    <div *ngFor="let garden of user.gardens">
+        <app-garden [garden]="garden"></app-garden>
+    </div>
+</div>
