@@ -17,8 +17,16 @@ export class GardenService {
         return garden;
     }
 
-    async updateGarden(garden: Garden): Promise<Garden> {
-        await dbService.db.collection(DB_COLLECTION_GARDEN).findOneAndReplace({ id: garden.id }, garden);
+    async updateGarden(garden: GardenDB): Promise<Garden> {
+        const filter = { id: garden.id };
+        const update = {
+            id: garden.id,
+            dimension: garden.dimension,
+            location: garden.location,
+            name: garden.name,
+            products: garden.products,
+        };
+        await dbService.db.collection(DB_COLLECTION_GARDEN).findOneAndReplace(filter, update, { returnDocument: 'before' });
         return garden;
     }
 

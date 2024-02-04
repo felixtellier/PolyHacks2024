@@ -24,10 +24,25 @@ export class GardenController {
             }
         });
 
+        this.router.get('/:id', async (req: Request, res: Response) => {
+            try {
+                const garden = await this.gardenService.getGardenById(parseInt(req.params.id, 10));
+
+                if (garden === null) {
+                    res.status(StatusCodes.NOT_FOUND).send();
+                    return;
+                }
+
+                res.status(StatusCodes.OK).json(garden);
+            } catch (error) {
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+            }
+        });
+
         this.router.put('/', async (req: Request, res: Response) => {
             try {
                 const garden: Garden = req.body;
-
+                // console.log(garden);
                 if (!Object.keys(garden).length) {
                     res.status(StatusCodes.BAD_REQUEST).send();
                     return;

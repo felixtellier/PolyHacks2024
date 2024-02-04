@@ -24,6 +24,8 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { GardenCreationComponent } from './pages/garden-creation/garden-creation.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { AuthentificationDialogComponent } from './components/authentification-dialog/authentification-dialog.component';
 
 /**
  * Main module that is used in main.ts.
@@ -43,6 +45,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
         GardenEditionComponent,
         InfoPageComponent,
         ProfilePageComponent,
+        ConfirmationDialogComponent,
+        AuthentificationDialogComponent,
     ],
     imports: [
         AppMaterialModule,
