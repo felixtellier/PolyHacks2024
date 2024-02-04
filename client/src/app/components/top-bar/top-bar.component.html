@@ -1,12 +1,7 @@
 <div class="topBar">
-    <div class="logo">
-        <div class="container">
-            <img src="./assets/img/logo-plant.png" alt="Logo Projet" />
-            <div id="search">
-                <img src="./assets/img/search.png" />
-                <input type="text" />
-            </div>
-            <img src="./assets/img/user.png" id="user" />
-        </div>
-    </div>
+    <img (click)="goToHome()" src="./assets/img/logo-plant.png" alt="Logo Projet" class="logo" />
+    <span class="name">Grow Green</span>
+    <button class="button" (click)="goToProfile()">
+        <mat-icon class="icon">person_outline</mat-icon>
+    </button>
 </div>

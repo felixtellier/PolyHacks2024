@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommunicationService } from '@app/services/communication.service';
 import { Garden } from '@common/garden';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-garden-container',
@@ -9,11 +8,23 @@ import { BehaviorSubject } from 'rxjs';
     styleUrls: ['./garden-container.component.scss'],
 })
 export class GardenContainerComponent implements OnInit {
-    readonly gardens: BehaviorSubject<Garden[]> = new BehaviorSubject<Garden[]>([]);
+    filteredGardens: Garden[] = [];
+    value: string = '';
+
+    private gardens: Garden[] = [];
 
     constructor(private readonly communicationService: CommunicationService) {}
 
     ngOnInit(): void {
-        this.communicationService.getAllGardens().subscribe(this.gardens);
+        this.communicationService.getAllGardens().subscribe((result) => {
+            this.gardens = result;
+            this.filteredGardens = this.gardens;
+        });
+    }
+
+    filterList() {
+        this.filteredGardens = this.gardens.filter((garden) => {
+            return garden.name.toUpperCase().includes(this.value.toUpperCase());
+        });
     }
 }
