@@ -18,7 +18,7 @@ export class CommunicationService {
     }
 
     pushGarden(garden: Garden): Observable<Garden> {
-        return this.http.post<Garden>(`${this.baseUrl}/garden`, garden).pipe(catchError(this.handleError<Garden>('PushGarden')));
+        return this.http.put<Garden>(`${this.baseUrl}/garden`, garden).pipe(catchError(this.handleError<Garden>('PushGarden')));
     }
 
     private handleError<T>(request: string, result?: T): (error: Error) => Observable<T> {
