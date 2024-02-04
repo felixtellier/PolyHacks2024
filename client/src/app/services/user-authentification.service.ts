@@ -13,11 +13,8 @@ export class UserAuthentificationService {
     sendUserInfo(username: string, password: string) {
         this.communicationService.postUser(username, password).subscribe({
             next: (response) => {
-                // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-                this.isLog = response.status === 200;
-                if (response.body) this.user = response.body[0];
-                // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-                return response.status === 200;
+                this.user = response.body;
+                this.isLog = true;
             },
         });
     }
