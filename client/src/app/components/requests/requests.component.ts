@@ -50,7 +50,6 @@ export class RequestsComponent implements OnInit {
     ngOnInit(): void {
         this.outDataSource.data = this.outRequests;
         this.inDataSource.data = this.inRequests;
-        console.log(this.outDataSource.data);
     }
 
     // private getRequests(): void {
