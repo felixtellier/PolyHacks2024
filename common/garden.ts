@@ -7,3 +7,6 @@ export interface Garden {
     products: string[];
 }
 
+export interface GardenDB extends Garden {
+    _id?: any;
+}
