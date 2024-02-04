@@ -17,6 +17,8 @@ import { AppComponent } from '@app/pages/app/app.component';
 import { MainPageComponent } from '@app/pages/main-page/main-page.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponentComponent } from './components/auth-button-component/auth-button-component.component';
+import { AuthentificationDialogComponent } from './components/authentification-dialog/authentification-dialog.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { GardenContainerComponent } from './components/garden-container/garden-container/garden-container.component';
 import { GardenEditionComponent } from './components/garden-edition/garden-edition.component';
 import { GardenComponent } from './components/garden/garden/garden.component';
@@ -44,6 +46,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
         GardenEditionComponent,
         InfoPageComponent,
         ProfilePageComponent,
+        ConfirmationDialogComponent,
+        AuthentificationDialogComponent,
         RequestsComponent,
     ],
     imports: [
