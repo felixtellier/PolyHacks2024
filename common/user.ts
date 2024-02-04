@@ -8,3 +8,7 @@ export interface User {
     points: number;
     requests: Request[];
 }
+
+export interface UserDB extends User {
+    _id?: any;
+}
