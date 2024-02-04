@@ -1,32 +1,38 @@
 <div class="garden-container">
-    <h1>Créer un jardin</h1>
-    <mat-form-field>
-        <mat-label>Nom du jardin</mat-label>
-        <input matInput [(ngModel)]="garden.name" />
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Adresse</mat-label>
-        <input matInput [(ngModel)]="garden.location" />
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Dimensions en m²</mat-label>
-        <input matInput [(ngModel)]="garden.dimension" />
-    </mat-form-field>
-    <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-            <mat-panel-title> Aliments</mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div *ngFor="let product of garden.products; index as i">
+    <h1>Informations du jardin</h1>
+    <div class="input-container">
+        <div class="flex-column">
             <mat-form-field>
-                <mat-label>Entrer un aliment</mat-label>
-                <input matInput (keyup.enter)="garden.products.push('')" value="{{ garden.products[i] }}" />
+                <mat-label>Nom du jardin</mat-label>
+                <input matInput [(ngModel)]="garden.name" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Adresse du jardin</mat-label>
+                <input matInput [(ngModel)]="garden.location" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Dimensions en m²</mat-label>
+                <input matInput [(ngModel)]="garden.dimension" />
             </mat-form-field>
         </div>
-        <button mat-raised-button color="accent" *ngIf="!garden.products || garden.products.length < 1" (click)="garden.products.push('')">
-            Ajouter
-        </button>
-    </mat-expansion-panel>
+        <div>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Aliments cultivés</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div *ngFor="let product of garden.products; index as i">
+                    <mat-form-field>
+                        <mat-label>Entrer un aliment</mat-label>
+                        <input matInput (keyup.enter)="garden.products.push('')" value="{{ garden.products[i] }}" />
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button color="accent" *ngIf="!garden.products || garden.products.length < 1" (click)="garden.products.push('')">
+                    Ajouter
+                </button>
+            </mat-expansion-panel>
+        </div>
+    </div>
     <label>Photo du jardin</label>
     <input type="file" (change)="handleFileInput($event)" />
     <button mat-raised-button color="primary" (click)="confirm()">Confirmer</button>
