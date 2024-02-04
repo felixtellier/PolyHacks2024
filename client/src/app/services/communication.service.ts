@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Garden } from '@common/garden';
+import { InRequest } from '@common/request';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -17,8 +18,8 @@ export class CommunicationService {
         return this.http.get<Garden[]>(`${this.baseUrl}/garden`).pipe(catchError(this.handleError<Garden[]>('GetGardens')));
     }
 
-    sendRequest(gardenId: number): Observable<void> {
-        return this.http.post<void>(`${this.baseUrl}/garden`, gardenId).pipe(catchError(this.handleError<void>('PushGarden')));
+    sendRequest(request: InRequest): Observable<void> {
+        return this.http.post<void>(`${this.baseUrl}/garden`, request).pipe(catchError(this.handleError<void>('PushGarden')));
     }
 
     pushGarden(garden: Garden): Observable<Garden> {

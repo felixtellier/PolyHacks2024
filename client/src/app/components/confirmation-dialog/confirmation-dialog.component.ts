@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommunicationService } from '@app/services/communication.service';
 import { Garden } from '@common/garden';
+import { InRequest } from '@common/request';
 
 @Component({
     selector: 'app-confirmation-dialog',
@@ -22,7 +23,11 @@ export class ConfirmationDialogComponent {
             this.dialogRef.close(false);
             return;
         }
-        this.communicationService.sendRequest(this.garden.id);
+        const request: InRequest = {
+            garden: this.garden.name,
+            user: 'test',
+        };
+        this.communicationService.sendRequest(request);
         this.dialogRef.close(true);
     }
 }
